@@ -7,44 +7,61 @@ This project focuses on the fundamentals of FPS gameplay in a simple way:
 - Jumping
 - Crouching
 - Mouse look
-- Character controller setup
+- Shooting
+- Recoil
+- Target range
+- Score tracking
 
-This repository is intentionally simple and beginner-friendly so you can learn the important mechanics before adding shooting, enemies, or scoring.
+This repository is intentionally simple and beginner-friendly so you can learn the important mechanics before adding more advanced systems like enemies, health, or bigger levels.
 
 ## Recommended Unity version
 Use Unity 2022 LTS or later.
 
 ## Setup steps
 1. Open Unity Hub
-2. Create a new 3D project (URP or Built-in is okay)
-3. Clone this repo into a folder or copy the files into your Unity project
-4. In the Unity editor, create an empty GameObject called `Player`
-5. Add a `CharacterController` component to the Player object
-6. Add a child camera to the Player object and name it `Main Camera`
-7. Attach `MouseLook.cs` to the camera
-8. Attach `FirstPersonController.cs` to the Player object
-9. Drag the camera into the `cameraTransform` field on the controller
-10. Press Play and use:
+2. Create a new 3D project
+3. Open this repository in the project folder or copy the scripts into a Unity project
+4. Create a `Player` object with a `CharacterController`
+5. Add a child camera named `Main Camera`
+6. Attach `MouseLook.cs` to the camera
+7. Attach `FirstPersonController.cs` to the `Player`
+8. Attach `BasicShooter.cs` to the `Player`
+9. Add a `Ground` object with a `Plane`
+10. Create target cubes and tag them as `Target`
+11. Add `TargetHealth.cs` to each target
+12. Add a `Canvas` with two `Text` objects for score and timer
+13. Attach `GameManager.cs` to an empty object and assign the UI Text references
+14. Press Play and test:
    - `WASD` to move
    - `Space` to jump
    - `Left Control` to crouch
-   - `Shift` to sprint
+   - `Left Shift` to sprint
    - Mouse to look around
+   - Left Click to shoot
 
-## Scripts included
-- `Assets/Scripts/FirstPersonController.cs` – handles movement, jumping, sprinting, crouching, and gravity
-- `Assets/Scripts/MouseLook.cs` – handles the camera rotation with the mouse
+## Included scripts
+- `Assets/Scripts/FirstPersonController.cs` – movement, jump, sprint, crouch, gravity
+- `Assets/Scripts/MouseLook.cs` – camera rotation and recoil
+- `Assets/Scripts/BasicShooter.cs` – raycast shooting and target hit detection
+- `Assets/Scripts/TargetHealth.cs` – target health and respawn logic
+- `Assets/Scripts/GameManager.cs` – score and round timer
 
-## Beginner notes
-This project is intentionally minimal. The goal is to learn how FPS controls work before adding more advanced systems like shooting recoil, enemies, or projectile physics.
-
-## Next step after movement
-Once movement feels good, we will add:
+## What this shooting range includes
+- movement
+- aiming
 - shooting
 - recoil
-- hit detection
-- target objects
-- score and health
-- fun kid-friendly arena polish
+- target damage
+- score
+- countdown timer
+- target respawn
 
-If you want, the next step is to build the shooting system.
+## Next step after this
+Once the shooting range works, the next systems to add are:
+- enemy characters
+- health bars
+- sound effects
+- fun arena art
+- more levels or modes
+
+If you want, the next step is to add a simple enemy bot or a colorful winning screen.

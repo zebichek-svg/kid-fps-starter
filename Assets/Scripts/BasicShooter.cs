@@ -7,7 +7,7 @@ public class BasicShooter : MonoBehaviour
     public float fireRate = 0.2f;
     public float range = 50f;
     public float damage = 25f;
-    
+
     [Header("Effects")]
     public Transform muzzlePoint;
     public ParticleSystem muzzleFlash;
@@ -20,7 +20,8 @@ public class BasicShooter : MonoBehaviour
         if (fpsCamera == null)
             fpsCamera = Camera.main;
 
-        mouseLook = fpsCamera.GetComponent<MouseLook>();
+        if (fpsCamera != null)
+            mouseLook = fpsCamera.GetComponent<MouseLook>();
     }
 
     private void Update()
@@ -42,7 +43,6 @@ public class BasicShooter : MonoBehaviour
 
         Vector3 origin = fpsCamera.transform.position;
         Vector3 direction = fpsCamera.transform.forward;
-
         Ray ray = new Ray(origin, direction);
 
         if (Physics.Raycast(ray, out RaycastHit hit, range))
@@ -55,7 +55,6 @@ public class BasicShooter : MonoBehaviour
                 if (target != null)
                 {
                     target.TakeDamage(damage);
-                    GameManager.instance.AddScore(target.points);
                 }
             }
         }
